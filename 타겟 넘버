@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+int answer = 0;
+
+
+void calc(vector<int> numbers, int target, int idx, int sum){
+    if(numbers.size()<=idx){
+        if(sum==target) answer++;
+        return ;
+    }
+    
+    calc(numbers, target,idx+1 ,sum+numbers[idx]);
+    calc(numbers, target, idx+1,sum-numbers[idx]);
+    
+}
+
+int solution(vector<int> numbers, int target) {
+  
+    calc(numbers,target,0,0);
+    return answer;
+}
