@@ -1,0 +1,36 @@
+#include <string>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+int check[9999999]={0,};
+
+bool prime(int n){
+    if(n<2) return false;
+    for(int i=2;i<=sqrt(n);i++){
+        if(!(n%i))return false;
+    }
+    return true;
+}
+
+int solution(string numbers) {
+    int answer = 0;
+    int tmp=0;
+    sort(numbers.begin(),numbers.end());
+    do{
+        for(int i=1;i<numbers.size()+1;i++){
+            tmp=stoi(numbers.substr(0,i));
+            if(!check[tmp]){
+                if(prime(tmp)){
+                    answer++;
+                }
+            }  
+            check[tmp]=1;     
+        }
+    }while(next_permutation(numbers.begin(),numbers.end()));
+    
+    return answer;
+}
