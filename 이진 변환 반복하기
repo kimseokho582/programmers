@@ -1,0 +1,38 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
+
+string bi(int x){
+    string tmp="";
+    while(x>0){
+        tmp+=to_string(x%2);
+        x=x/2;
+    }
+    reverse(tmp.begin(),tmp.end());
+    return tmp;
+
+}
+
+vector<int> solution(string s) {
+    vector<int> answer(2,0);
+    int num=0,cnt=0;
+    while(1){
+        int Zcnt=0;
+        if(s=="1"){
+            break;
+        }
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='0') Zcnt++;
+        }
+        answer[1]+=Zcnt;
+        num=s.size()-Zcnt;
+        s=bi(num);
+        
+        cnt++;
+    }
+    answer[0]=cnt;
+    return answer;
+}
