@@ -1,0 +1,38 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <sstream>
+#include <map>
+
+using namespace std;
+
+string solution(vector<string> t, vector<string> l, vector<int> p) {
+    string answer = "";
+    int answerscore=0;
+    vector<string>tmp(6,"");
+    map<string, int>score;
+    for(int j=0;j<5;j++){
+        istringstream iss(t[j]);
+        for(int i=0;i<6;i++){
+            iss>>tmp[i];
+        }
+        reverse(tmp.begin()+1,tmp.end());
+        for(int i=0;i<l.size();i++){
+          auto it = find(tmp.begin(),tmp.end(),l[i])-tmp.begin();
+
+          if(!(it==6))score[tmp[0]]+=it*p[i];
+        }
+
+        if(answerscore<score[tmp[0]]){
+            answerscore=score[tmp[0]];
+            answer=tmp[0];
+        }else if(answerscore==score[tmp[0]]){
+            if(tmp[0]<answer){
+                answerscore=score[tmp[0]];
+                answer=tmp[0];
+            }
+        }
+    }
+    return answer;
+}
