@@ -1,0 +1,33 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int movedir[11][11][11][11]={0,};
+
+int solution(string dirs) {
+    int answer =0;
+    int x=5,y=5,nx=5,ny=5;
+    for(char c :dirs){
+        if(c=='U'){
+            if(ny+1<=10)ny++;
+            else continue;
+        }else if(c=='D'){
+            if(ny-1>=0)ny--;
+            else continue;
+        }else if(c=='R'){
+            if(nx+1<=10)nx++;
+            else continue;
+        }else if(c=='L'){
+            if(nx-1>=0)nx--;
+            else continue;
+        }
+        
+        if(movedir[x][y][nx][ny]==0){
+            movedir[x][y][nx][ny]=1;
+            movedir[nx][ny][x][y]=1;
+            answer++;
+        }
+        x=nx,y=ny;
+    }
+    return answer;
+}
