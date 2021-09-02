@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int calc(int n){
+    int cnt=0;
+    while(n>0){
+        if(n%2)cnt++;
+        n/=2;
+    }
+    return cnt;
+}
+
+int solution(int n) {
+    int answer = 0;
+    int cmp=calc(n);
+    while(n++){
+        if(cmp==calc(n)){
+            break;
+        }
+    }
+    return n;
+}
