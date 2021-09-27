@@ -1,0 +1,42 @@
+#include <set>
+#include <iterator>
+#include <string>
+#include <vector>
+#include <stack>
+using namespace std;
+
+string solution(int n, int k, vector<string> cmd) {
+    string answer(n,'X');
+    set<int> table;
+    stack<int> back;
+
+    for(int i=0;i<n;i++) table.insert(i);
+
+    auto cur = table.find(k);
+
+    for(string s:cmd){
+        if(s[0]=='U'){
+            int x = stoi(s.substr(2));
+            //int x =s[2]-'0';
+            while(x--) cur = prev(cur);
+
+        }
+        else if(s[0]=='D'){
+            int x = stoi(s.substr(2));
+            while(x--) cur = next(cur);
+        }
+        else if(s[0]=='C'){
+            back.push(*cur);
+            cur = table.erase(cur);
+            if(cur==table.end()) cur = prev(cur);
+        }
+        else if(s[0]=='Z'){
+            table.insert(back.top());
+            back.pop();
+        }
+    }
+
+    for(int i:table) answer[i]='O';
+
+    return answer;
+}
