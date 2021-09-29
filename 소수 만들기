@@ -1,0 +1,28 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+vector<int>num;
+int answer=0;
+bool prime[2998] = {false, };
+
+void dfs(int cnt,int index, int sum){
+    if(cnt==3){
+        if(!prime[sum]) answer++;
+        return;
+    }
+    for(int i=index;i<num.size();i++){
+        dfs(cnt+1,i+1,sum+num[i]);
+    }
+}
+
+int solution(vector<int> nums) {
+    num=nums;
+    for(int i = 2; i < 2998; i++)
+        for(int j = i + i; j < 2998; j += i)
+            prime[j] = true;
+    
+    dfs(0,0,0);
+    
+    return answer;
+}
