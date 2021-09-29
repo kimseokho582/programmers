@@ -1,0 +1,31 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+
+using namespace std;
+
+vector<pair<double,pair<int,pair<int,int>>>> v;
+vector<int> solution(vector<int> weights, vector<string> head2head) {
+    vector<int> answer;
+    for(int i=0;i<weights.size();i++){
+        int win=0,heavywin=0,total=0;
+        for(int j=0;j<weights.size();j++){
+             if(head2head[i][j]=='W'){
+                 win++;
+                 total++;
+                 if(weights[i]<weights[j]){
+                     heavywin++;
+                 }
+             }else if(head2head[i][j]=='L'){
+                total++;
+             }
+        }
+        v.push_back({-win/double(total),{-heavywin,{-weights[i],i+1}}});
+    }
+    sort(v.begin(),v.end());
+    for(auto x:v){
+        answer.push_back(x.second.second.second);
+    }
+    return answer;
+}
