@@ -1,0 +1,18 @@
+#include <string>
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+long long solution(long long n) {
+    long long answer = 0;
+    double x = sqrt(n);
+    int y =sqrt(n);
+    if(x==y){
+        return pow(y+1,2);
+    }else{
+        return -1;
+    }
+ 
+}
