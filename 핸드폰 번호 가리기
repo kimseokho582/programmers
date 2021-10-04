@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+char star(char n){
+    return '*';
+}
+
+string solution(string p) {
+    string answer = "";
+    transform(p.begin(),p.end()-4,p.begin(),star);
+    answer=p;
+    return answer;
+}
