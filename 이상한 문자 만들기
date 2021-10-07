@@ -1,0 +1,22 @@
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <cctype>
+#include <iostream>
+using namespace std;
+
+string solution(string s) {
+    transform(s.begin(),s.end(),s.begin(),::toupper);
+    int cnt=0;
+    for(int i=0;i<s.size();i++){
+        if(isalpha(s[i])){
+            if(cnt%2==1){
+                s[i]=tolower(s[i]);
+            }
+        }else{
+            cnt=-1;
+        }
+        cnt++;
+    }
+    return s;
+}
