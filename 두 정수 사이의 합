@@ -1,0 +1,21 @@
+#include <string>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+long long solution(int a, int b) {
+    long long answer = 0;
+    int x,y;
+    if(a<b){
+        x=b;
+        y=a;
+    }else{
+        x=a;
+        y=b;
+    }
+
+    for(int i=y;i<=x;i++){
+        answer+=i;
+    }
+    return answer;
+}
