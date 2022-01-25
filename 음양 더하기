@@ -1,0 +1,7 @@
+function solution(a, s) {
+    var ans = 0; 
+    a.map((v,i)=> {
+        s[i]?ans+=v:ans-=v;
+    })
+    return ans;
+}   
