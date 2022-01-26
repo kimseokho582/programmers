@@ -1,0 +1,9 @@
+function solution(sizes) {
+    let w=0,h=0;
+    sizes.map(([a,b])=>{
+        w=Math.max(w,Math.max(a,b));
+        h=Math.max(h,Math.min(a,b));
+    })
+    
+    return w*h;
+}
