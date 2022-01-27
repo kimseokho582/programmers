@@ -1,0 +1,28 @@
+function solution(d) {
+    var ans = [];
+    let tmp;
+    for(let i=0;i<d.length;i++){
+      
+        if(d[i].match(/[0-9]/)){
+            if(d[i+1]==='0'){
+                tmp=10;
+                i++;
+            }else{
+                tmp=d[i];
+            }
+        }
+        if(d[i]==="S")ans.push(parseInt(tmp));
+        if(d[i]==="D")ans.push(Math.pow(tmp,2));
+        if(d[i]==="T")ans.push(Math.pow(tmp,3));
+        
+        if(d[i]==="*"){
+            ans[ans.length-1]*=2;
+            ans[ans.length-2]*=2;
+        }
+        if(d[i]==="#"){
+            ans[ans.length-1]*=-1;
+        }
+    }
+   
+    return ans.reduce((num,e)=>(num+e),0)
+}
