@@ -1,0 +1,13 @@
+function solution(a, c) {
+    var ans = [];
+    var n=c.length;
+    c.map((_,i)=>{
+        var tmp= a.filter((e,ai)=>{
+            return c[i][0]-1<=ai&&ai<c[i][1];
+        });
+        tmp.sort((a,b)=>a-b);
+        ans.push(tmp[c[i][2]-1]);
+    })
+
+    return ans;
+}
