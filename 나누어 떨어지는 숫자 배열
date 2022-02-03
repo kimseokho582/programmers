@@ -1,0 +1,5 @@
+function solution(a, d) {
+    let ans =[];
+    ans= a.filter((e)=> !(e%d)).sort((a,b)=>a-b);
+    return  ans.length? ans: [-1];
+}
