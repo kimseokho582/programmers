@@ -1,0 +1,16 @@
+function solution(p, l) {
+
+    let num = 0;
+ 
+    while (p.length) {
+        --l;
+        if (p[0] < Math.max(...p)) {   
+            if (l ===-1) l = p.length - 1;     
+            p.push(p.shift());
+        } else {
+            num++;
+            if (l === -1) return num;
+            p.shift();
+        }
+    }
+}
