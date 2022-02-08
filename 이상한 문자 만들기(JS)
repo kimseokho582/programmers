@@ -1,0 +1,9 @@
+function solution(s) {
+    return s.split(' ').map(e => {
+        let tmp = '';
+        for(let i = 0; i < e.length; i++) {
+            tmp+=i%2? e[i].toLowerCase():e[i].toUpperCase();
+        }
+        return tmp;
+    }).join(' ');
+}
