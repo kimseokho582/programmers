@@ -1,0 +1,32 @@
+function solution(id_list, report, k) {
+    var answer = [];
+    const s = new Set();
+    report.map(e=>{
+        s.add(e);
+    })
+    
+    let r = new Map();
+    id_list.forEach((e) => {
+        return (r[e] = {
+            report: [],
+            reported: 0,
+            is: false,
+        });
+    });
+    
+    for (let item of s){
+        const [reportP,reportedP]=item.split(' ');
+        r[reportP].report.push(reportedP);
+        r[reportedP].reported+=1;
+        if(r[reportedP].reported>=k)r[reportedP].is=true;
+    }
+    
+    id_list.forEach(e=>{
+        let tmp =0;
+        r[e].report.forEach(ee=>{
+            if(r[ee].is)tmp+=1;
+        });
+        answer.push(tmp);
+    })
+    return answer;
+}
