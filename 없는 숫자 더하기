@@ -1,0 +1,7 @@
+function solution(n) {
+    var ans = 0;
+    n.forEach(e=>{
+        ans+=e;
+    });
+    return 45-ans;
+}
