@@ -1,0 +1,49 @@
+function solution(n, h) {
+    let ans = '';
+    let pad =[[1,4,7,-1],[2,5,8,0],[3,6,9,-2]];
+    let l=[-1,0,3],r=[-2,2,3];
+    n.forEach((e)=>{
+        let cur= [];
+        for(let i=0;i<3;i++){
+            if(pad[i].indexOf(e)!==-1){
+                cur=[e,i,pad[i].indexOf(e)];
+                break;
+            }
+        }
+        
+        if(cur[1]===0){
+            ans+="L";
+            l=cur;
+        }else if(cur[1]===2){
+            ans+="R";
+            r=cur;
+        }else{
+            if(calc(cur,l,r)===1){
+                ans+="L";
+                l=cur;
+            }else if(calc(cur,l,r)===-1){
+                ans+="R";
+                r=cur;
+            }else{
+                if(h==="right"){
+                    ans+="R";
+                    r=cur;                    
+                }else{
+                    ans+="L";
+                    l=cur;
+                }
+            }
+        }
+    });
+    return ans;
+}
+
+function calc(a,b,c){
+    if( Math.abs(a[1]-b[1])+Math.abs(a[2]-b[2])<Math.abs(a[1]-c[1])+Math.abs(a[2]-c[2])){
+        return 1;
+    }else if(Math.abs(a[1]-b[1])+Math.abs(a[2]-b[2])>Math.abs(a[1]-c[1])+Math.abs(a[2]-c[2])){
+        return -1;
+    }else{
+        return 0;
+    }
+}
