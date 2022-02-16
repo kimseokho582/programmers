@@ -1,0 +1,10 @@
+function solution(s) {
+    var answer = 0;
+    let words =[/zero/g,/one/g,/two/g,/three/g,/four/g,/five/g,/six/g,/seven/g,/eight/g,/nine/g];
+    
+    words.map((e,i)=>{
+       s=s.replace(e,i);
+    })
+    return parseInt(s);
+    
+}
