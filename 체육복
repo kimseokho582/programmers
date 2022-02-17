@@ -1,0 +1,26 @@
+function solution(n, lost, reserve) {
+    var ans = n;
+    lost.sort((a,b)=>a-b);
+    reserve.sort((a,b)=>a-b);        
+    ll=new Set(lost);
+    rr=new Set(reserve);
+    
+    for(l of ll){
+       if(rr.has(l)){
+           rr.delete(l);
+           ll.delete(l);
+       }
+    } 
+    for(l of ll){
+       for(r of rr){
+           if(Math.abs(l-r)<=1){
+               ll.delete(l);
+               rr.delete(r);
+               break;
+           }
+       }
+  
+    } 
+
+    return ans-ll.size;
+}
