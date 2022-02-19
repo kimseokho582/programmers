@@ -1,0 +1,22 @@
+function solution(b, m) {
+    let ans=0;
+    let n=b.length;
+    let s=[];
+    m.forEach((e,i)=>{
+        for(let j=0;j<n;j++){
+            if(b[j][e-1]!==0){
+                if(s[s.length-1]===b[j][e-1]){
+                    ans+=2;
+                    s.pop();
+                }else{
+                    s.push(b[j][e-1]);
+                }
+                b[j][e-1]=0;
+                break;
+            }
+        }
+        
+    })
+    
+    return ans;
+}
