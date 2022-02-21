@@ -1,0 +1,15 @@
+function solution(left, right) {
+    var ans = 0;
+    for(let i=left;i<=right;i++){
+        calc(i)%2?ans-=i:ans+=i;
+    }
+    return ans;
+}
+
+function calc(a){
+    let tmp=1;
+    for(let i=1;i<=a/2;i++){
+       !(a%i)?tmp+=1:"";
+    }
+    return tmp;
+}
