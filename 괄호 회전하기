@@ -1,0 +1,27 @@
+function solution(s) {
+    var answer = 0;
+    let n =s.length-1;
+    let tmp =s.split("");
+    do{
+        if(calc(tmp)===true)answer++;
+        tmp.push(tmp.shift());
+    }while(n--);
+    return answer;
+}
+
+function calc(s){
+    let stk =[];
+    s.forEach((e)=>{
+        let top = stk.slice(-1)[0];
+        if(top==='['&&e===']'){
+            stk.pop();
+        }else if(top==="("&&e===")"){
+            stk.pop();
+        }else if(top==="{"&&e==="}"){
+            stk.pop();
+        }else{
+            stk.push(e);
+        }
+    });
+    return stk.length? false:true;
+}
