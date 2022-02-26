@@ -1,0 +1,16 @@
+function solution(s){
+    let cp =0;
+    let cy=0;
+    s.split("").forEach(e=>{
+        if(e==='p'||e==='P'){
+            cp++;
+        }else if(e==='y'||e==='Y'){
+            cy++;
+        }
+    })
+    
+    if(cp===0&&cy===0)return true;
+    else if(cp!==cy)return false;
+    else if(cp===cy)return true;
+
+}
