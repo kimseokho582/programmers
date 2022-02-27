@@ -1,0 +1,9 @@
+# **비밀지도**
+
+```jsx
+function solution(n, arr1, arr2) {
+    var answer = [];
+    arr1.forEach((e,i)=>{answer.push((e|arr2[i]).toString(2).padStart(n,0).replace(/1/g,"#").replace(/0/g," "));})
+    return answer;
+}
+```
