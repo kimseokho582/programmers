@@ -1,0 +1,5 @@
+function solution(s) {
+    var anwer="";
+    s.forEach((e,i)=>{if(e==="Kim")answer= `김서방은 ${i}에 있다`;});
+    return answer;
+}
