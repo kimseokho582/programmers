@@ -1,0 +1,11 @@
+function solution(s) {
+    var answer = true;
+    if(!(s.length==4||s.length==6)){
+        answer=false;
+    }
+    s.split("").forEach((x)=>{
+        if(isNaN(x)==true)answer=false;
+
+    })
+    return answer;
+}
