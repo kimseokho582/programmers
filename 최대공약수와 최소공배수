@@ -1,0 +1,12 @@
+function solution(n, m) {
+    var a= gcd(n,m);
+   return [a,n*m/a];
+}
+
+function gcd(a,b){
+    if(b===0)return a;
+    else{
+        return gcd(b,a%b);
+    }
+    
+}
