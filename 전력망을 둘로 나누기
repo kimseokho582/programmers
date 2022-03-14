@@ -1,0 +1,36 @@
+
+const links = {}; 
+function solution(n, wires) {
+    var answer = 999;
+
+    wires.map(w => {
+        const [a, b] = w;
+        if(!links[a]) links[a] = [];
+        if(!links[b]) links[b] = [];
+        links[a].push(b);
+        links[b].push(a);
+    })
+    wires.forEach((x)=>{
+        const [a,b]=x;
+        answer= Math.min(answer,Math.abs(DFS(a,b)-DFS(b,a)));
+    })
+    return answer;
+}
+
+const DFS= (s,exp)=> {
+    let visited =[];
+    let find = [];
+    find.push(s);
+    while(find.length!==0){
+        let cur = find.shift();
+        if(!visited.includes(cur)){
+            visited.push(cur);
+            find=[...find,...links[cur].filter((x)=>{return x!==exp;})];  
+        }
+    }
+    return visited.length;
+}
+
+
+
+
