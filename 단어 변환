@@ -1,0 +1,22 @@
+function solution(begin, target, words) {
+    return BFS(begin,target,words);
+}
+
+function BFS(b,t,w){
+    let visited = [];
+    let find = [];
+    find.push([b,0]);
+    while(find.length!==0){
+        let [cur, cnt]=find.shift();
+        if(cur===t)return cnt;
+        w.forEach((e,i)=>{
+           if(visited[i]!==1){
+               if(e.split("").filter((v,j)=> v===cur.split("")[j]).length===e.length-1){
+                   find.push([e,++cnt]);
+                   visited[i]=1;
+               }
+           }
+       })
+    }
+    return 0;
+}
