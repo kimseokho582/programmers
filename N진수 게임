@@ -1,0 +1,16 @@
+function solution(n, t, m, p) {
+    var answer= [],queue=[], num=-1;
+    
+     while(answer.length<t){
+        if(queue.length<m){
+            ++num;
+            queue.push(...num.toString(n).split(""));
+        }else{
+            for(var i=0;i<m;i++){
+                if(i===p-1) answer.push(queue.shift());
+                else queue.shift();
+            }
+        }
+     }
+    return answer.join("").toUpperCase();
+}
