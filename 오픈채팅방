@@ -1,0 +1,14 @@
+function solution(record) {
+    var ans = [];
+    var m = new Map([]);
+    for(var i=0;i<record.length;i++){
+        const [o,id,n] =record[i].split(" ");
+        if(o==='Enter')ans.push([id,"님이 들어왔습니다."]);
+        if(o==='Leave'){
+            ans.push([id,"님이 나갔습니다."]);
+            continue;
+        }
+        m.set(id,n);
+    }
+    return ans.map(e=> m.get(e[0])+e[1]);
+}
